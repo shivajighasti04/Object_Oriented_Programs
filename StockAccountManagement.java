@@ -1,9 +1,14 @@
 package Com.Bridgelabz.oop;
+/**
+ * Program to manage stock account and display total stock value
+ * 
+ * @author Shivaji Ghasti
+ * 
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
 public class StockAccountManagement {
+	
 	public static void main(String[] args) {
 		System.out.println("------------- Welcome to Stock Management System --------------------");
 		System.out.println();
@@ -12,18 +17,18 @@ public class StockAccountManagement {
 	}
 }
 
-class Stock {
-	int stocksNumber;
-	int numOfShares;
-	float sharePrice;
-
-	ArrayList<String> stockNames;
-
+	class Stock {
+		int stocksNumber;
+		int numOfShares;
+		float sharePrice;
+	
+		ArrayList<String> stockNames;
+	
 	// Constructor
 	public Stock() {
 		stockNames = new ArrayList<>();
 	}
-
+	
 	// Adding stock names
 	public void addStockName() {
 		Scanner sc = new Scanner(System.in);
@@ -33,10 +38,10 @@ class Stock {
 		System.out.println("Stocks names are:" + stockNames);
 	}
 }
-
+	
 class StockPortfolio extends Stock {
-	float totalStockValue;
-
+		float totalStockValue;
+	
 	// Taking values of shares and price from user
 	public void stockPriceInput() {
 		Scanner sc = new Scanner(System.in);
@@ -53,8 +58,8 @@ class StockPortfolio extends Stock {
 		this.totalStockValue = sharePrice * numOfShares;
 		return totalStockValue;
 	}
-
-	// Method to calculate the total value company shares and Stock Report
+	
+	// Method to calculate the total value company shares and Stock Reports
 	public void stockPortFolio() {
 		int i = 0;
 		float stockValue = 0;
@@ -71,6 +76,7 @@ class StockPortfolio extends Stock {
 			i++;
 			System.out.println("---------------------------------------------------");
 		}
+		
 		System.out.println("Total Stock Value is : " + stockValue);
 		System.out.println("---------------------------------------------------");
 	}
