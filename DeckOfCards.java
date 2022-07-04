@@ -1,36 +1,68 @@
 package Com.Bridgelabz.oop;
+
 /**
+ *Program to build Deck of Cards,shuffle the deck and distributing it to 4
+ * players
  * 
  * @author shivaji
  *
  */
-
 public class DeckOfCards {
-	public static void main(String[] args) {
-		
-		 String[] Suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
-	        String[] value = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
-	        int totalcount = Suits.length * value.length;
-	        String[] deck = new String[totalcount];
-	        for (int i = 0; i < value.length; i++) {
-	            for (int j = 0; j < Suits.length; j++) {
-	                deck[Suits.length * i + j] = value[i] + " " + Suits[j];
-	            }
-	        }
-	        for (int i = 0; i < totalcount; i++) {
-	            int r = i + (int) (Math.random() * (totalcount - i));
-	            String temp = deck[r];
-	            deck[r] = deck[i];
-	            deck[i] = temp;
-	        }
-	        System.out.println("Total numver of deck of cards are " + deck.length);
-	        for (int i = 0; i <=3; i++) {
-	            System.out.println("----- Person " + (i + 1) + " -----");
-	            for (int j = 0; j <= 8; j++) {
-	                System.out.println(deck[i + j * 4] + " (Card " + (i + j * 4) + ")");
-	            }
-	        }
-	    }
+	
+	static String[] deck = new String[52];
+
+	// Creating deck array
+	public static void buildDeck() {
+		String[] suit = { " Spread -", " Dimond -", " club -", "Heart -" };
+		String[] rank = { " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 10", " Jack", " Queen", " King", " Ace" };
+
+		// Creating deck of 52 cards
+		System.out.println("Deck of cards : ");
+		for (int i = 0; i < deck.length; i++) {
+			deck[i] = suit[i / 13] + rank[i % 13];
+			System.out.println(" " + deck[i] + " , ");
+		}
 	}
+
+	// Using random function and swapping method shuffling card of deck
+	public static void shuffleDeck() {
+
+		for (int j = 0; j < deck.length; j++) {
+
+			int index = (int) (Math.random() * 51);
+
+			String temp = deck[j];
+			deck[j] = deck[index];
+			deck[index] = temp;
+		}
+
+		System.out.println();
+		System.out.println("Shuffled deck :");
+		for (String m : deck) {
+			System.out.println(" " + m + ", ");
+		}
+	}
+
+	// Distributing 9 card to 4 players
+	public static void cardDistribution() {
+		int a = 0;
+		for (int i = 1; i <= 4; i++) {
+			System.out.println();
+			System.out.print("Player " + i + " Cards : [ ");
+			for (int j = 0; j < 9; j++) {
+				System.out.print(deck[a] + ", ");
+				a++;
+			}
+			System.out.println(" ]");
+		}
+	}
+
+	public static void main(String[] args) {
+
+		buildDeck();
+		shuffleDeck();
+		cardDistribution();
+	}
+}
 
 
